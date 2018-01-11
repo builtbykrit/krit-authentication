@@ -1,0 +1,7 @@
+Django>=1.11.4
+django-appconf>=1.0.2
+django-rest-auth>=0.9.1
+djangorestframework>=3.6.4
+djangorestframework-jsonapi>=2.2.0
+python-http-client>=3.0.0
+urllib3>=1.22

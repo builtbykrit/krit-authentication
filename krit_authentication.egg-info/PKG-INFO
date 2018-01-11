@@ -1,0 +1,45 @@
+Metadata-Version: 1.1
+Name: krit-authentication
+Version: 0.1
+Summary: A simple Django authentication app
+Home-page: https://www.builtbykrit.com
+Author: Kevin Hoffman
+Author-email: kevin@builtbykrit.com
+License: BSD License
+Description: =====
+        Krit-Authentication
+        =====
+        
+        Krit-Authentication is a simple Django app to handle authentication
+        
+        Quick start
+        -----------
+        
+        1. Add "krit-authentication" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'krit-authentication',
+            ]
+        
+        2. Include the polls URLconf in your project urls.py like this::
+        
+            urlpatterns = [
+            # other urls
+            url(r"^/", include("krit.authentication.urls", namespace="krit_authentication")),
+        ]
+        
+        3. Run `python manage.py migrate` to create the user profile model.
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
