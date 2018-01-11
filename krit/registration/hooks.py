@@ -1,6 +1,5 @@
 import hashlib
 import random
-from pprint import pprint
 
 from django.core.mail import EmailMultiAlternatives
 from python_http_client.exceptions import BadRequestsError

@@ -6,30 +6,89 @@ Home-page: https://www.builtbykrit.com
 Author: Kevin Hoffman
 Author-email: kevin@builtbykrit.com
 License: BSD License
-Description: =====
-        Krit-Authentication
-        =====
+Description: # krit-authentication
+        Set of django apps for authentication and registration
         
-        Krit-Authentication is a simple Django app to handle authentication
+        This library uses `django-rest-auth`, `djangorestframework`, and `djangorestframework-jsonapi`.
         
-        Quick start
-        -----------
+        ## Getting started
         
-        1. Add "krit-authentication" to your INSTALLED_APPS setting like this::
+        1. Clone this repo
+        2. Use pip to install dist/krit-authentication-<version>.tar.gz to your project
+        3. Add `krit-authentication` to your apps
+        4. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
         
-            INSTALLED_APPS = [
-                ...
-                'krit-authentication',
-            ]
+        ## Usage
         
-        2. Include the polls URLconf in your project urls.py like this::
+        ### Authentication
         
-            urlpatterns = [
-            # other urls
-            url(r"^/", include("krit.authentication.urls", namespace="krit_authentication")),
-        ]
+        **Models**
+        - User Profile (Abstract)
+        ```
+        user = models.OneToOneField(
+        	settings.AUTH_USER_MODEL, related_name='profile',
+        	on_delete=models.CASCADE, verbose_name="User",
+        	primary_key=True
+        )
         
-        3. Run `python manage.py migrate` to create the user profile model.
+            class Meta:
+                abstract = True
+                verbose_name = "User Profile"
+                verbose_name_plural = "User Profiles"
+        
+            class JSONAPIMeta:
+                resource_name = "profiles"
+        ```
+        
+        **Serializers**
+        - PasswordResetSerializer
+        - UserSerializer
+        	- The user serializer just has a meta class that sets the `password` field to `write_only`.
+        
+        **Views**
+        - LoginView
+        - LogoutView
+        - PasswordChangeView
+        - PasswordResetConfirmationView
+        - PasswordResetView
+        - UserView
+        - UserDetailView
+        
+        Most of the time you'll want to subclass the `UserView` and `UserDetailView` to use your own serializers. All of these views use the `JSONAPIRenderer` and `JSONAPIParser`.
+        
+        **URLS**
+        
+        If you subclass the `UserView` and `UserDetailView` you'll need to override the `users` and `users-detail` urls to use your custom views. You can do that by using the same url pattern and passing your own custom view.
+        ```
+        url(r'^users/$', UserView.as_view(), name='users'),
+        url(r'^users/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='users-detail')
+        ```
+        
+        **Settings**
+        - KRIT_RESET_PASSWORD_URL
+        - KRIT_RESET_PASSWORD_SUBJECT
+        - KRIT_SUPPORT_EMAIL_ADDRESS
+        
+        ### Registration
+        
+        **Models**
+        - SignupCode
+        - SignupCodeResult
+        These models are only used if you are using `krit-teams`
+        
+        
+        **Serializers**
+        - UserRegistrationSerializer
+        
+        **Views**
+        - UserRegistrationView
+        
+        **URLS**
+        - registration
+        
+        **Settings**
+        - KRIT_INVITATION_SUBJECT
+        - KRIT_SIGNUP_URL
         
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment

@@ -1,6 +1,6 @@
 LICENSE
 MANIFEST.in
-README
+README.md
 setup.py
 krit/__init__.py
 krit/authentication/__init__.py

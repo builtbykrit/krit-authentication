@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
                 ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('signup_code', models.ForeignKey(to='registration.SignupCode', on_delete=models.CASCADE)),
+                ('signup_code', models.ForeignKey(to='krit_registration.SignupCode', on_delete=models.CASCADE)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
         ),
