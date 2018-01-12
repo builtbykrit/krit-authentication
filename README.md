@@ -2,11 +2,11 @@
 Set of django apps for authentication and registration
 
 This library uses `django-rest-auth`, `djangorestframework`, and `djangorestframework-jsonapi`.
+Current version: 0.1.1
 
 ## Getting started
 
-1. Clone this repo
-2. Use pip to install dist/krit-authentication-<version>.tar.gz to your project
+1. `pip install git+https://github.com/builtbykrit/krit-authentication@0.1.1`
 3. Add `krit-authentication` to your apps
 4. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
 
