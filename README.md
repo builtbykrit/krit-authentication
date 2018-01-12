@@ -7,8 +7,8 @@ Current version: 0.1.1
 ## Getting started
 
 1. `pip install git+https://github.com/builtbykrit/krit-authentication@0.1.1`
-3. Add `krit-authentication` to your apps
-4. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
+2. Add `krit.authentication` and `krit.registration` to your apps
+3. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
 
 ## Usage
 
