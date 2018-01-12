@@ -59,6 +59,7 @@ url(r'^users/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='users-detail')
 **Settings**
 - KRIT_RESET_PASSWORD_URL
 - KRIT_RESET_PASSWORD_SUBJECT
+	- Current format is `{} has invited you to {}` where the first string is the inviter name and the second string is the current value of `KRIT_RESET_PASSWORD_SUBJECT`. May want to change it if we need it more generic.
 - KRIT_SUPPORT_EMAIL_ADDRESS
 
 ### Registration
@@ -67,7 +68,6 @@ url(r'^users/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='users-detail')
 - SignupCode
 - SignupCodeResult
 These models are only used if you are using `krit-teams`
-
 
 **Serializers**
 - UserRegistrationSerializer
