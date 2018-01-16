@@ -62,6 +62,10 @@ url(r'^users/(?P<pk>[0-9]+)/$', UserDetailView.as_view(), name='users-detail')
 	- Current format is `{} has invited you to {}` where the first string is the inviter name and the second string is the current value of `KRIT_RESET_PASSWORD_SUBJECT`. May want to change it if we need it more generic.
 - KRIT_SUPPORT_EMAIL_ADDRESS
 
+**Notes**
+
+The library assumes the invite template is called `invite` and the subsitution dictionary has two keys `link` and `subject`.
+
 ### Registration
 
 **Models**
@@ -81,3 +85,7 @@ These models are only used if you are using `krit-teams`
 **Settings**
 - KRIT_INVITATION_SUBJECT
 - KRIT_SIGNUP_URL
+
+**Notes**
+
+The library assumes the password reset email template is called `reset_password` and the subsitution dictionary has one key `link` with the value being the reset password link.
