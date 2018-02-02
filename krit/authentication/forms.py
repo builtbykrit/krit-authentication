@@ -17,7 +17,7 @@ class PasswordResetForm(RestAuthPasswordResetForm):
         password_reset_url = None
         if hasattr(settings, "KRIT_RESET_PASSWORD_URL"):
             password_reset_url = "{}?{}".format(
-                settings.RESET_PASSWORD_URL,
+                settings.KRIT_RESET_PASSWORD_URL,
                 urlencode({"token": token, "uid": uid}))
         mail = EmailMultiAlternatives(
             from_email=settings.KRIT_SUPPORT_EMAIL_ADDRESS,
