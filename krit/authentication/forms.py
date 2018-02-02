@@ -20,8 +20,6 @@ class PasswordResetForm(RestAuthPasswordResetForm):
                 settings.RESET_PASSWORD_URL,
                 urlencode({"token": token, "uid": uid}))
         mail = EmailMultiAlternatives(
-            subject=settings.KRIT_RESET_PASSWORD_SUBJECT,
-            body="test",
             from_email=settings.KRIT_SUPPORT_EMAIL_ADDRESS,
             reply_to=[settings.KRIT_REPLY_TO_EMAIL_ADDRESS],
             to=to_email

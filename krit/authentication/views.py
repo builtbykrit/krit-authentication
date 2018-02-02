@@ -14,7 +14,7 @@ from rest_framework_json_api.parsers import JSONParser as JSONAPIParser
 from rest_framework_json_api.renderers import JSONRenderer as JSONAPIRenderer
 
 from .models import UserProfile
-from .serializers import UserSerializer
+from .serializers import UserSerializer, PasswordResetSerializer
 
 
 class LoginView(RestAuthLoginView):
@@ -40,6 +40,7 @@ class PasswordResetConfirmationView(RestAuthPasswordResetConfirmationView):
 class PasswordResetView(RestAuthPasswordResetView):
     renderer_classes = (JSONRenderer,)
     parser_classes = (JSONParser,)
+    serializer_class = PasswordResetSerializer
 
 
 class UserView(RestAuthUserView):
