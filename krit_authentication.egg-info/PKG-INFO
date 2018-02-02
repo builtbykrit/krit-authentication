@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: krit-authentication
-Version: 0.1.2
+Version: 0.1.3
 Summary: A simple Django authentication app
 Home-page: https://www.builtbykrit.com
 Author: Kevin Hoffman
@@ -10,13 +10,13 @@ Description: # krit-authentication
         Set of django apps for authentication and registration
         
         This library uses `django-rest-auth`, `djangorestframework`, and `djangorestframework-jsonapi`.
+        Current version: 0.1.3
         
         ## Getting started
         
-        1. Clone this repo
-        2. Use pip to install dist/krit-authentication-<version>.tar.gz to your project
-        3. Add `krit-authentication` to your apps
-        4. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
+        1. `pip install git+https://github.com/builtbykrit/krit-authentication@0.1.1`
+        2. Add `krit.authentication` and `krit.registration` to your apps
+        3. Add `krit.authentication.urls` and `krit.registration.urls` to your urlpatterns. Add them to the bottom of the list if you need to override them.
         
         ## Usage
         
@@ -67,7 +67,12 @@ Description: # krit-authentication
         **Settings**
         - KRIT_RESET_PASSWORD_URL
         - KRIT_RESET_PASSWORD_SUBJECT
+        	- Current format is `{} has invited you to {}` where the first string is the inviter name and the second string is the current value of `KRIT_RESET_PASSWORD_SUBJECT`. May want to change it if we need it more generic.
         - KRIT_SUPPORT_EMAIL_ADDRESS
+        
+        **Notes**
+        
+        The library assumes the invite template is called `invite` and the subsitution dictionary has two keys `link` and `subject`.
         
         ### Registration
         
@@ -75,7 +80,6 @@ Description: # krit-authentication
         - SignupCode
         - SignupCodeResult
         These models are only used if you are using `krit-teams`
-        
         
         **Serializers**
         - UserRegistrationSerializer
@@ -89,6 +93,10 @@ Description: # krit-authentication
         **Settings**
         - KRIT_INVITATION_SUBJECT
         - KRIT_SIGNUP_URL
+        
+        **Notes**
+        
+        The library assumes the password reset email template is called `reset_password` and the subsitution dictionary has one key `link` with the value being the reset password link.
         
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment

@@ -2,7 +2,7 @@
 Set of django apps for authentication and registration
 
 This library uses `django-rest-auth`, `djangorestframework`, and `djangorestframework-jsonapi`.
-Current version: 0.1.1
+Current version: 0.1.3
 
 ## Getting started
 
