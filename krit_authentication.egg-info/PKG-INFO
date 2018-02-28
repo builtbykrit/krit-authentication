@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: krit-authentication
-Version: 0.1.3
+Version: 0.1.4
 Summary: A simple Django authentication app
 Home-page: https://www.builtbykrit.com
 Author: Kevin Hoffman
