@@ -93,7 +93,7 @@ class SignupCode(models.Model):
     def send(self, **kwargs):
         if hasattr(settings, "KRIT_SIGNUP_URL"):
             signup_url = "{}?{}".format(
-                settings.SIGNUP_URL,
+                settings.KRIT_SIGNUP_URL,
                 urlencode({"code": self.code})
             )
         elif "signup_url" not in kwargs:
