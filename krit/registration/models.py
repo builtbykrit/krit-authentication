@@ -33,6 +33,9 @@ class SignupCode(models.Model):
                                 on_delete=models.CASCADE)
     sent = models.DateTimeField("sent", null=True, blank=True)
 
+    class JSONAPIMeta:
+        resource_name = "signup_codes"
+
     class Meta:
         verbose_name = "signup code"
         verbose_name_plural = "signup codes"
