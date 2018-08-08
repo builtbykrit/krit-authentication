@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='krit-authentication',
-    version='0.1.5',
+    version='0.1.6',
     packages=find_packages(),
     include_package_data=True,
     license='BSD License',
@@ -19,7 +19,7 @@ setup(
     author='Kevin Hoffman',
     author_email='kevin@builtbykrit.com',
     install_requires=[
-        'Django>=1.11.4',
+        'Django>=2.0.0',
         'django-appconf>=1.0.2',
         'django-rest-auth>=0.9.1',
         'djangorestframework>=3.6.4',

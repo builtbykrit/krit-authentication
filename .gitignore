@@ -1,6 +1,7 @@
 .idea/*
 bin/*
 lib/*
+venv/*
 pyvenv.cfg
 __pycache__/
 

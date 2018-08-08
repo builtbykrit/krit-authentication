@@ -5,7 +5,7 @@ import operator
 from django.contrib.sites.models import Site
 try:
     from django.core.urlresolvers import reverse
-except ModuleNotFoundError:
+except ImportError:
     from django.urls import reverse
 from django.db import models
 from django.utils import timezone
