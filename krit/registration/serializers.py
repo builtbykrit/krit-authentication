@@ -8,7 +8,7 @@ UserModel = get_user_model()
 
 def _get_user_registration_fields():
     """Return fields to serialize from UserModel"""
-    if type(UserModel.__dict__.get('registration_fields')) == tuple:
+    if type(UserModel.__dict__.get('registration_fields')) in [tuple, list]:
         return UserModel.registration_fields
     return ('date_joined', 'email', 'first_name', 'is_staff',
             'is_superuser', 'is_active', 'last_name',
