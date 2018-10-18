@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.utils import IntegrityError
 from rest_framework import status
 from rest_framework.exceptions import APIException, ValidationError
@@ -11,6 +11,8 @@ from .models import SignupCode
 from .serializers import UserRegistrationSerializer
 
 MESSAGE_STRINGS = hookset.get_message_strings()
+
+User = get_user_model()
 
 
 class UserRegistrationView(CreateAPIView):
