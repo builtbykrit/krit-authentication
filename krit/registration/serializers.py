@@ -6,10 +6,19 @@ from rest_framework_json_api import serializers
 UserModel = get_user_model()
 
 
+def _get_user_registration_fields():
+    """Return fields to serialize from UserModel"""
+    if type(UserModel.__dict__.get('registration_fields')) == tuple:
+        return UserModel.registration_fields
+    return ('date_joined', 'email', 'first_name', 'is_staff',
+            'is_superuser', 'is_active', 'last_name',
+            'password')
+
+
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = '__all__'
+        fields = _get_user_registration_fields()
         read_only_fields = ('date_joined', 'is_active',
                             'is_staff', 'is_superuser')
         extra_kwargs = {
