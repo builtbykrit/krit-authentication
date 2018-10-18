@@ -9,9 +9,7 @@ UserModel = get_user_model()
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = ('date_joined', 'email', 'first_name', 'is_staff',
-                  'is_superuser', 'is_active', 'last_name',
-                  'password')
+        fields = '__all__'
         read_only_fields = ('date_joined', 'is_active',
                             'is_staff', 'is_superuser')
         extra_kwargs = {
@@ -21,10 +19,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         } # write_only_fields were removed from DRF as of 3.2
 
     def create(self, validated_data):
-        user = UserModel(email=validated_data['email'],
-                         first_name=validated_data['first_name'],
-                         last_name=validated_data['last_name'],
-                         username=validated_data['email'])
+        user = UserModel(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
