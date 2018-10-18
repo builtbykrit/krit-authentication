@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_auth.views import LoginView as RestAuthLoginView
 from rest_auth.views import LogoutView as RestAuthLogoutView
 from rest_auth.views import PasswordChangeView as RestAuthPasswordChangeView
@@ -15,6 +15,9 @@ from rest_framework_json_api.renderers import JSONRenderer as JSONAPIRenderer
 
 from .models import UserProfile
 from .serializers import UserSerializer, PasswordResetSerializer
+
+
+User = get_user_model()
 
 
 class LoginView(RestAuthLoginView):
