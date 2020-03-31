@@ -30,6 +30,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = UserModel(**validated_data)
         user.set_password(validated_data['password'])
+        # Set username to email if it doesnt exist
+        if not user.username:
+            user.username = user.email
         user.save()
         return user
 
